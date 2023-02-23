@@ -1,0 +1,23 @@
+<div>
+    <label>הכנס שם עיר</label>
+    <br />
+    <input type="text" #val />
+    <br />
+    <button (click)="send(val.value)">לתחזית מזג האויר</button>
+    <br />
+    <button (click)="send3days(val.value)">לתחזית מזג האויר לימים הבאים</button>
+</div>
+<div *ngIf="flag==true">
+    <div *ngFor="let weather of w">
+        <p>יום {{weather.date}}</p>
+        <p>טמפרטורה ממוצעת {{weather.avgtemp_c}}</p>
+        <p>מהירות הרוח ממוצעת {{weather.avgvis_km}}</p>
+        <div *ngIf="flag3==true">
+            <div *ngFor="let hour of weather.hour">
+                <p>טמפרטורה {{hour.temp_c}}</p>
+                <p>מהירות הרוח {{hour.avgvis_km}}</p>
+                <br />
+            </div>
+        </div>
+    </div>
+</div>
